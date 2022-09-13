@@ -5,11 +5,11 @@ const Mux = require('@mux/mux-node');
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::podcast.podcast', ({ strapi }) => ({
-    async create(ctx) {
-        const { Video, Data } = new Mux(process.env.MUX_TOKEN_ID, process.env.MUX_TOKEN_SECRET);
-        const {
-            author, title } = ctx.request.body.data;
+    async update(ctx) {
+        const { Video } = new Mux(process.env.MUX_TOKEN_ID, process.env.MUX_TOKEN_SECRET);
+
         try {
+            console.log(ctx.request.body);
             const response = await Video.LiveStreams.create({
                 playback_policy: 'public',
                 new_asset_settings: { playback_policy: 'public' }
@@ -23,11 +23,13 @@ module.exports = createCoreController('api::podcast.podcast', ({ strapi }) => ({
         }
         catch (err) {
             ctx.response.status = 500;
+            console.log(err);
             return {
                 error: {
                     message: err
                 }
             }
         }
-    }
+    },
+
 }));

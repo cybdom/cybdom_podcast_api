@@ -15,9 +15,6 @@
     "title": {
       "type": "string"
     },
-    "streamId": {
-      "type": "string"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -30,6 +27,9 @@
       ]
     },
     "streamKey": {
+      "type": "string"
+    },
+    "author": {
       "type": "string"
     }
   }
