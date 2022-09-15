@@ -31,6 +31,9 @@
     },
     "author": {
       "type": "string"
+    },
+    "playback_id": {
+      "type": "string"
     }
   }
 }

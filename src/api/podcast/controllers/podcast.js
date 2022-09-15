@@ -17,7 +17,8 @@ module.exports = createCoreController('api::podcast.podcast', ({ strapi }) => ({
             console.log(response);
             ctx.request.body.data.streamId = response.id;
             ctx.request.body.data.streamKey = response.stream_key;
-            const data = super.create(ctx);
+            ctx.request.body.data.playback_id = response.playback_ids[0].id;
+            const data = super.update(ctx);
             ctx.response.status = 200;
             return data;
         }
